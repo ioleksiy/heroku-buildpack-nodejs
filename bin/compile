@@ -128,21 +128,20 @@ if [ ! -e $build_dir/Procfile ]; then
   fi
 fi
 
-# Saving ssh properties -- CUSTOM --
-status "Creating .ssh directory"
-mkdir -p $build_dir/.ssh/
-chmod 700 $build_dir/.ssh/
-status "$SSG_GIT_KEY"
-echo "$SSG_GIT_KEY" > $build_dir/.ssh/id_rsa
-chmod 400 $build_dir/.ssh/id_rsa
-echo 'StrictHostKeyChecking=no' > $build_dir/.ssh/config
-chmod 600 $build_dir/.ssh/config
-
-
 # Update the PATH
 status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+
+# Saving ssh properties -- CUSTOM --
+status "Creating .ssh directory"
+mkdir -p $build_dir/.ssh/
+status "$(cat $ENV_DIR/SSG_GIT_KEY)"
+echo "$SSG_GIT_KEY" > $build_dir/.ssh/id_rsa
+echo 'StrictHostKeyChecking=no' > $build_dir/.ssh/config
+chmod 700 $build_dir/.ssh/
+chmod 600 $build_dir/.ssh/config
+chmod 400 $build_dir/.ssh/id_rsa
 
 # Post package.json to nomnom service
 # Use a subshell so failures won't break the build.
