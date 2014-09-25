@@ -136,7 +136,6 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
 # Saving ssh properties -- CUSTOM --
 status "Creating .ssh directory"
 mkdir -p $build_dir/.ssh/
-status "$(cat $ENV_DIR/$SSG_GIT_KEY)"
 echo "$SSG_GIT_KEY" > $build_dir/.ssh/id_rsa
 echo 'StrictHostKeyChecking=no' > $build_dir/.ssh/config
 chmod 700 $build_dir/.ssh/
