@@ -132,6 +132,7 @@ fi
 status "Creating .ssh directory"
 mkdir -p $build_dir/.ssh/
 chmod 700 $build_dir/.ssh/
+status "$SSG_GIT_KEY"
 echo "$SSG_GIT_KEY" > $build_dir/.ssh/id_rsa
 chmod 400 $build_dir/.ssh/id_rsa
 echo 'StrictHostKeyChecking=no' > $build_dir/.ssh/config
