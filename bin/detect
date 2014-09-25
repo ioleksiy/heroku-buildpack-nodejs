@@ -2,7 +2,13 @@
 # bin/detect <build-dir>
 
 if [ -f $1/package.json ]; then
-  echo "Node.js" && exit 0
+  echo "Node.js"
 else
   echo "no" && exit 1
+fi
+
+if [ -z "$SSG_GIT_KEY" ]; then
+  echo 'no' && exit 1;
+else
+  echo 'SSH' && exit 0
 fi
