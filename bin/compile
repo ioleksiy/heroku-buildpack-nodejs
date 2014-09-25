@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# custom functions
+mkdir -p ~/.ssh/
+chmod 700 ~/.ssh/
+echo "$SSG_GIT_KEY" > ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_rsa
+echo 'StrictHostKeyChecking=no' > ~/.ssh/config
+chmod 600 ~/.ssh/config
+
+# initial file
 set -e            # fail fast
 set -o pipefail   # don't ignore exit codes when piping output
 # set -x          # enable debugging
