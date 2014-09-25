@@ -135,7 +135,7 @@ chmod 700 $build_dir/.ssh/
 echo "$SSG_GIT_KEY" > $build_dir/.ssh/id_rsa
 chmod 400 $build_dir/.ssh/id_rsa
 echo 'StrictHostKeyChecking=no' > $build_dir/.ssh/config
-chmod 600 ~/.ssh/config
+chmod 600 $build_dir/.ssh/config
 
 
 # Update the PATH
