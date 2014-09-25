@@ -36,9 +36,7 @@ export_env_dir() {
   if [ -d "$env_dir" ]; then
     for e in $(ls $env_dir); do
       echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
-      export "$e=$(cat $env_dir/$e)" &&
-      status "VARIABLE: $e" &&
-      status "VARIABLE Data: $(cat $env_dir/$e)"
+      export "$e=$(cat $env_dir/$e)"
       :
     done
   fi
